@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#pkg_add hotplug-diskmount toad
+#cp attach /etc/hotplugd/attach
+#/etc/hotplugd/attach init
+#rcctl enable hotplugd toadd
+#rcctl start hotplugd toadd
+
+#/etc/hotplugd/attach
+
+#remember to change _user_ with user allowed to mount and rw removable devices
+
+DEVCLASS=$1
+DEVNAME=$2
+
+case $DEVCLASS in
+2)
+        /usr/local/libexec/hotplug-diskmount attach -u _user_ "$DEVNAME" -m 755 >> /tmp/att.log
+        ;;
+esac
